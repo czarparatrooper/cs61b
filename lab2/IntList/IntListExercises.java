@@ -3,10 +3,10 @@ package IntList;
 public class IntListExercises {
 
     /**
-     * Part A: (Buggy) mutative method that adds a constant C to each
-     * element of an IntList
+     * PART A: (BUGGY) MUTATIVE METHOD THAT ADDS A CONSTANT C TO EACH
+     * ELEMENT OF AN INTLIST
      *
-     * @param lst IntList from Lecture
+     * @PARAM LST INTLIST FROM LECTURE
      */
     public static void addConstant(IntList lst, int c) {
         IntList head = lst;
