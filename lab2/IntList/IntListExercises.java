@@ -9,11 +9,14 @@ public class IntListExercises {
      * @PARAM LST INTLIST FROM LECTURE
      */
     public static void addConstant(IntList lst, int c) {
+        if (lst == null) {
+            return;
+        }
         IntList head = lst;
-        while (head.rest != null) {
+        do {
             head.first += c;
             head = head.rest;
-        }
+        } while (head.rest != null);
     }
 
     /**
@@ -24,9 +27,13 @@ public class IntListExercises {
      * @param L IntList from Lecture
      */
     public static void setToZeroIfMaxFEL(IntList L) {
+        if (L == null) {
+            return;
+        }
         IntList p = L;
         while (p != null) {
-            if (firstDigitEqualsLastDigit(max(p))) {
+            int maxVal = max(p);
+            if (firstDigitEqualsLastDigit(maxVal)) {
                 p.first = 0;
             }
             p = p.rest;
@@ -67,16 +74,20 @@ public class IntListExercises {
      */
     public static boolean squarePrimes(IntList lst) {
         // Base Case: we have reached the end of the list
+        boolean count = false;
         if (lst == null) {
-            return false;
+            return count;
         }
 
-        boolean currElemIsPrime = Primes.isPrime(lst.first);
+        do {
+            boolean currElemIsPrime = Primes.isPrime(lst.first);
 
-        if (currElemIsPrime) {
-            lst.first *= lst.first;
-        }
+            if (currElemIsPrime) {
+                lst.first *= lst.first;
+                count = true;
+            }
+        } while (lst.rest != null);
 
-        return currElemIsPrime || squarePrimes(lst.rest);
+        return count;
     }
 }
